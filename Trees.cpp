@@ -35,7 +35,6 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    cout.tie(0);
     try
     {
         ifstream mayank("../../testCases.txt");
@@ -45,6 +44,8 @@ int main()
             cerr << "Error opening file" << endl;
             exit(1);
         }
+
+        //write your code in here
     }
     catch (exception const &e)
     {
