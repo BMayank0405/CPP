@@ -39,28 +39,14 @@ int main()
     cout.tie(0);
     try
     {
-        ifstream mayank("./testCases.txt");
-        mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
+        ofstream mayank("./RandomtestCases.txt");
+        mayank.exceptions(ofstream::eofbit | ofstream::failbit | ofstream::badbit);
         if (!mayank.is_open())
         {
             cerr << "Error opening file" << endl;
             exit(1);
         }
-        int isa, j, k;
-        mayank >> isa;
-        cout << isa << endl;
-        while (isa--)
-        {
-            mayank >> j >> k;
-            cout << j << " " << k << endl;
-
-            while (j--)
-            {
-                int m, n;
-                mayank >> m >> n;
-                cout << m << " " << n << endl;
-            }
-        }
+        srand(time(NULL));
     }
     catch (exception const &e)
     {

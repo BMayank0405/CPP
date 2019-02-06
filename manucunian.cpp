@@ -44,8 +44,6 @@ int main()
             cerr << "Error opening file" << endl;
             exit(1);
         }
-
-        //write your code in here
     }
     catch (exception const &e)
     {

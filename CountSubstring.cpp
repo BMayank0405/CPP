@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.codechef.com/problems/CSUB
  */
 
 #include <bits/stdc++.h>
@@ -39,7 +39,7 @@ int main()
     cout.tie(0);
     try
     {
-        ifstream mayank("../../testCases.txt");
+        ifstream mayank("./testCases.txt");
         mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
         if (!mayank.is_open())
         {
@@ -47,7 +47,28 @@ int main()
             exit(1);
         }
 
-        //write your code here
+        int t;
+        mayank >> t;
+        while (t--)
+        {
+            int len, count = 0;
+            string str;
+            mayank >> len;
+            mayank >> str;
+            REP(len)
+            {
+                if (str[i] == '1')
+                {
+                    count++;
+                    for (int j = i + 1; j < len; j++)
+                    {
+                        if (str[j] == '1')
+                            count++;
+                    }
+                }
+            }
+            cout << count << "\n";
+        }
     }
     catch (exception const &e)
     {
