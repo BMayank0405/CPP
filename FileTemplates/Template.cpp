@@ -13,14 +13,17 @@
 //shorten coding time
 #define ll long long
 #define ull unsigned long long
-#define MOD unsigned int modulus = 1e9 + 7
+#define power9 1000000007
+#define power5 100007
+#define totalChars 25
 #define P pair<int, int>
 //end of shorten coding time
 
 //helper code
-#define frlp(c) for (const auto &value : c)
-#define REP(n) for (int i = 0; i < (n); i++)
-#define FOR(i, a, b) for (int i = (a); i <= (b); i++)
+#define forEach(c) for (auto &value : c)
+#define loopab(loopconstant, startingValue, endingValue) for (loopconstant = (startingValue); loopconstant <= (endingValue); loopconstant++)
+#define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper)
+
 #define Odd(n) if (n & 1)
 #define cases \
     int t;    \
@@ -29,7 +32,8 @@
 //end of helper code
 
 //debugging code
-#define watch(x) cout << (#x) << " is " << (x) << endl
+#define watch(x) cout << (#x) << " is " << (x) << "\n"
+
 using namespace std;
 
 int main()
