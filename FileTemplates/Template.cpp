@@ -41,6 +41,11 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+
+    //starting time of the program
+    int startTime = clock();
+    //
+
     try
     {
         ifstream mayank("../../testCases.txt");
@@ -57,6 +62,14 @@ int main()
     {
         cout << "There was an error: " << e.what() << endl;
     }
+
+
+
+    //ending time of program
+    int endTime = clock();
+
+    //just to check how much time does the code takes to execute
+    cout << "total execution time is " << (endTime - startTime) / double(CLOCKS_PER_SEC) << endl;
 
     return 0;
 }

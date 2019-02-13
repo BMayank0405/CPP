@@ -6,7 +6,7 @@
 		{
 			"label": "build",
 			"type": "shell",
-			"command": "g++ -g ${file} -o ${workspaceFolder}/binary/${fileBasenameNoExtension} ",
+			"command": "g++ -g ${file} -o ${workspaceFolder}/binary/${fileBasenameNoExtension} -lpthread ",
 			"group": {
 				"kind": "build",
 				"isDefault": true
@@ -16,7 +16,7 @@
 		{
 			"label": "run code",
 			"type": "shell",
-			"command": "g++ -g ${file} -o ${workspaceFolder}/binary/${fileBasenameNoExtension} && ${workspaceFolder}/binary/${fileBasenameNoExtension}",
+			"command": "g++ -g ${file} -o ${workspaceFolder}/binary/${fileBasenameNoExtension} -lpthread && ${workspaceFolder}/binary/${fileBasenameNoExtension}",
 			"group": {
 				"kind": "build",
 				"isDefault": true

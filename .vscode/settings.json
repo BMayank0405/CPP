@@ -2,7 +2,8 @@
 	"files.associations": {
 		"*.vue": "vue",
 		"iosfwd": "cpp",
-		"iostream": "cpp"
+		"iostream": "cpp",
+		"thread": "cpp"
 	},
 	//$HOME/.config/Code/User/FileTemplates
 	// 

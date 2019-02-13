@@ -3,7 +3,7 @@
  */
 
 #include <bits/stdc++.h>
-
+#include <thread>
 //optimization of program
 #define eb emplace_back
 #define gc getchar_unlocked
@@ -40,7 +40,7 @@ int main()
     try
     {
         //this code will open the file and remove the previous content stored in the file
-        ofstream mayank("./RandomtestCases.txt", ofstream::out | ofstream::trunc);
+        ofstream mayank("../testcases/RandomtestCases.txt", ofstream::out | ofstream::trunc);
         mayank.exceptions(ofstream::eofbit | ofstream::failbit | ofstream::badbit);
         if (!mayank.is_open())
         {
