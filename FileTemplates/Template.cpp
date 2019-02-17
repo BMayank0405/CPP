@@ -21,8 +21,8 @@
 
 //helper code
 #define forEach(c) for (auto &value : c)
-#define loopab(loopconstant, startingValue, endingValue) for (loopconstant = (startingValue); loopconstant <= (endingValue); loopconstant++)
-#define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper)
+#define loopab(loopconstant, startingValue, endingValue, adder) for (loopconstant = (startingValue); loopconstant <= (endingValue); loopconstant += adder)
+#define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
 
 #define Odd(n) if (n & 1)
 #define cases \
@@ -62,8 +62,6 @@ int main()
     {
         cout << "There was an error: " << e.what() << endl;
     }
-
-
 
     //ending time of program
     int endTime = clock();
