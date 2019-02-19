@@ -3,9 +3,11 @@
 		"*.vue": "vue",
 		"iosfwd": "cpp",
 		"iostream": "cpp",
-		"thread": "cpp"
+		"thread": "cpp",
+		"cmath": "cpp"
 	},
 	"files.exclude": {
+		"**/.*": true,
 		"**/binary": true
 	},
 	//$HOME/.config/Code/User/FileTemplates

@@ -12,6 +12,7 @@
 
 //shorten coding time
 #define ll long long
+#define ui unsigned int
 #define ull unsigned long long
 #define power9 1000000007
 #define power5 100007
