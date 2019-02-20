@@ -35,21 +35,21 @@ mutex vectLock;
 
 void GenerateTestCases(unsigned int start, unsigned int end, unsigned int threadnum)
 {
-	cout << "Thread started for " << threadnum << endl;
+	// cout << "Thread started for " << threadnum << endl;
 	unsigned int j = 0;
 
 	loopab(j, start, end)
 	{
 		unsigned int length = 1 + rand() % totalChars;
-		cout << "length : " << length << endl;
-		// str += length + "\n";
 		string str = "";
+
+		str += length;
 		while (length--)
 		{
-			cout << "1";
+			str += "1";
 		}
 		vectLock.lock();
-		cout << str << "\n";
+		cout << str << endl;
 		vectLock.unlock();
 	}
 
@@ -63,15 +63,15 @@ void GenerateTestCases(unsigned int start, unsigned int end, unsigned int thread
 
 void StrStream(unsigned int numOfThreads, unsigned int threadSpread)
 {
-	cout << threadSpread << endl;
+	// cout << threadSpread << endl;
 	unsigned int i = 0;
 	unsigned int start = 1;
 	unsigned int newEnd = start + threadSpread;
 	vector<thread> threadVect;
 	loop(i, numOfThreads)
 	{
-		cout << "thread number " << i << endl;
-		cout << "start for " << i << " is : " << start << " end for " << i << " is : " << newEnd << endl;
+		// cout << "thread number " << i << endl;
+		// cout << "start for " << i << " is : " << start << " end for " << i << " is : " << newEnd << endl;
 		//execute each thread such that it writes to the file
 		threadVect.emplace_back(GenerateTestCases,
 														start, newEnd, i);
@@ -93,8 +93,7 @@ int main()
 	cout.tie(0);
 	try
 	{
-		//this code will open the file and remove the previous content stored in the file
-		//test push for shell function
+
 		// ofstream mayank("../testcases/RandomtestCases.txt", ofstream::out | ofstream::trunc);
 		// mayank.exceptions(ofstream::eofbit | ofstream::failbit | ofstream::badbit);
 		// if (!mayank.is_open())
@@ -105,7 +104,12 @@ int main()
 		srand(time(NULL));
 		unsigned int testcases = 3 + rand() % power9, i, j;
 		cout << "testcases : " << testcases << "\n";
-		StrStream(3, round((double)testcases / 3));
+		unsigned int numofThreads = 3;
+		//need to improve this logic
+		if (testcases <= numofThreads)
+			StrStream(testcases, 1);
+		else
+			StrStream(numofThreads, round((double)testcases / numofThreads));
 	}
 	catch (exception const &e)
 	{
