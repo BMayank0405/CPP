@@ -40,19 +40,19 @@ void GenerateTestCases(unsigned int start, unsigned int end, unsigned int thread
 
 	loopab(j, start, end)
 	{
+		vectLock.lock();
+
 		unsigned int length = 1 + rand() % totalChars;
 		string str = "";
 
-		str += length;
+		str += "length " + length;
 		while (length--)
 		{
 			str += "1";
 		}
-		vectLock.lock();
 		cout << str << endl;
-		vectLock.unlock();
 	}
-
+	vectLock.unlock();
 	//create a lock for file
 	// if (!infile.is_open())
 	// {

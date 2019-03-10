@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.hackerearth.com/problem/algorithm/monk-and-square-root/
  */
 
 #include <bits/stdc++.h>
@@ -14,8 +14,7 @@
 #define ll long long
 #define ui unsigned int
 #define ull unsigned long long
-#define mod (int)(1e6 + 3)
-#define power9 (int)(1e9 + 7)
+#define power9 1000000007
 #define power5 100007
 #define totalChars 25
 #define P pair<int, int>
@@ -46,21 +45,32 @@ int main()
 
     try
     {
-        ifstream mayank("../../testCases.txt");
-        mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
-        if (!mayank.is_open())
-        {
-            cerr << "Error opening file" << endl;
-            exit(1);
-        }
-
         //write your code here
+        ll c, x, m;
+        long double y;
+        cases
+        {
+            m = 0;
+            cin >> c >> x;
+
+            while (m < x)
+            {
+                y = sqrt((m * x) + c);
+                if ((y - floor(y)) == 0)
+                    break;
+                else
+                    m++;
+            }
+            if (m == x)
+                cout << -1 << "\n";
+            else
+                cout << y << "\n";
+        }
     }
     catch (exception const &e)
     {
         cout << "There was an error: " << e.what() << endl;
     }
 
-    //ending time of program
     return 0;
 }

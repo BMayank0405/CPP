@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/practice-problems/algorithm/riyas-birthday-party-1/
  */
 
 #include <bits/stdc++.h>
@@ -14,7 +14,6 @@
 #define ll long long
 #define ui unsigned int
 #define ull unsigned long long
-#define mod (int)(1e6 + 3)
 #define power9 (int)(1e9 + 7)
 #define power5 100007
 #define totalChars 25

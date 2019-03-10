@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : PROBLEM_URL
  */
 
 #include <bits/stdc++.h>
@@ -14,8 +14,7 @@
 #define ll long long
 #define ui unsigned int
 #define ull unsigned long long
-#define mod (int)(1e6 + 3)
-#define power9 (int)(1e9 + 7)
+#define power9 1000000007
 #define power5 100007
 #define totalChars 25
 #define P pair<int, int>
@@ -37,6 +36,19 @@
 #define watch(x) cout << (#x) << " is " << (x) << "\n"
 
 using namespace std;
+int arr[9];
+
+void memorize()
+{
+    int i;
+    ll permute = 9;
+    arr[1] = 9;
+    loopab(i, 2, 8, 1)
+    {
+        arr[i] = (arr[i - 1] * permute);
+        permute--;
+    }
+}
 
 int main()
 {
@@ -46,15 +58,26 @@ int main()
 
     try
     {
-        ifstream mayank("../../testCases.txt");
-        mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
-        if (!mayank.is_open())
-        {
-            cerr << "Error opening file" << endl;
-            exit(1);
-        }
+        // ifstream mayank("../../testCases.txt");
+        // mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
+        // if (!mayank.is_open())
+        // {
+        //     cerr << "Error opening file" << endl;
+        //     exit(1);
+        // }
 
         //write your code here
+        memorize();
+        cases
+        {
+            int n;
+            cin >> n;
+            cout << arr[n] << "\n";
+        }
+        forEach(arr)
+        {
+            cout << value << " ";
+        }
     }
     catch (exception const &e)
     {

@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/practice-problems/algorithm/panda-and-chain-reaction/
  */
 
 #include <bits/stdc++.h>
@@ -14,8 +14,8 @@
 #define ll long long
 #define ui unsigned int
 #define ull unsigned long long
+#define power9 1000000007
 #define mod (int)(1e6 + 3)
-#define power9 (int)(1e9 + 7)
 #define power5 100007
 #define totalChars 25
 #define P pair<int, int>
@@ -37,6 +37,21 @@
 #define watch(x) cout << (#x) << " is " << (x) << "\n"
 
 using namespace std;
+ll result[1000006] = {0};
+ll fact_dp(int n)
+{
+
+    if (n >= 0)
+    {
+        result[0] = 1;
+        for (int i = 1; i <= n; ++i)
+        {
+            result[i] = ((i % mod) * (result[i - 1] % mod)) % mod;
+        }
+        return (result[n] % mod);
+    }
+    return 0;
+}
 
 int main()
 {
@@ -46,15 +61,22 @@ int main()
 
     try
     {
-        ifstream mayank("../../testCases.txt");
-        mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
-        if (!mayank.is_open())
-        {
-            cerr << "Error opening file" << endl;
-            exit(1);
-        }
+        // ifstream mayank("../../testCases.txt");
+        // mayank.exceptions(ifstream::eofbit | ifstream::failbit | ifstream::badbit);
+        // if (!mayank.is_open())
+        // {
+        //     cerr << "Error opening file" << endl;
+        //     exit(1);
+        // }
 
         //write your code here
+
+        cases
+        {
+            ll k, x;
+            cin >> k >> x;
+            cout << (fact_dp(k) * x) % mod << "\n";
+        }
     }
     catch (exception const &e)
     {
