@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : PROBLEM_URL
  */
 
 #include <bits/stdc++.h>
@@ -41,6 +41,24 @@ const char lineEnd = '\n';
 
 using namespace std;
 
+void updateBITree(vector<ll> &BITreeArr, ui startIndex, ll val)
+{
+    ull size = BITreeArr.size();
+    for (; startIndex < size; startIndex += startIndex & (-startIndex))
+    {
+        BITreeArr[startIndex] += val;
+    }
+}
+
+ll query(vector<ll> &BITreeArr, ui endIndex)
+{
+    ll sum = 0;
+    for (; endIndex > 0; endIndex -= endIndex & (-endIndex))
+    {
+        sum += BITreeArr[endIndex];
+    }
+}
+
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -49,8 +67,23 @@ int main()
 
     try
     {
-        //write your code here
-        
+
+        ull n, i, val;
+        cin >> n;
+        vector<ll> BITree(n + 1, 0);
+        vector<ll> Arr(n);
+
+        //construct BITree
+        loopab(i, 1, n, 1)
+        {
+            cin >> val;
+            Arr[i] = val;
+            updateBITree(BITree, i, val);
+        }
+
+        cout << "sum of 10 elements is " << query(BITree, 10) << lineEnd;
+
+        cout << "sum of [2,7] elements is " << query(BITree, 7) - query(BITree, 2 - 1) << lineEnd;
     }
     catch (exception const &e)
     {
