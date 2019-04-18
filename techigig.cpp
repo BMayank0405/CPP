@@ -55,29 +55,29 @@ int main()
 			cin >> size;
 			vector<ll> elements(size);
 			vector<ll> sum(size);
-			vector<ll> arrOfEl(size);
+			vector<string> arrOfEl(size);
 			loop(i, size - 1)
 			{
 				cin >> elements[i];
 			}
 
-			for (ui x = size - 1; x >= 0; x--)
+			for (int x = size - 1; x >= 0; x--)
 			{
 				//check for right sub array
 				//check for sum
 				ll rightSum = 0;
-				vector<ll> rightSubArr;
+				string rightSubString = "";
 				if (elements[x] > 0)
 				{
 
-					if (x + 1 < size)
+					if (x + 1 < size - 1)
 					{
-						ull max = 0, index = -1;
+						ll max = -1000000, index = -1;
 
 						//finding max
 						for (ui j = x + 2; j < size; j++)
 						{
-							if (sum[j] > max)
+							if (sum[j] >= max)
 							{
 								max = sum[j];
 								index = j;
@@ -86,18 +86,40 @@ int main()
 						//now pick the rightsub array from index
 						if (index > -1)
 						{
-							vector<ll> arraytofound;
-							arraytofound = arrOfEl[index];
+							rightSubString = arrOfEl[index];
+							rightSubString += to_string(elements[x]);
 							rightSum = max;
-							arraytofound.push_back(elements[x]);
-							rightSubArr = arraytofound;
+						}
+						else
+						{
+							rightSubString = to_string(elements[x]);
 						}
 					}
+					else
+					{
+						rightSubString = to_string(elements[x]);
+					}
+				}
+				else
+				{
+					rightSubString = to_string(elements[x]);
 				}
 				sum[x] = elements[x] + rightSum;
+
 				//correct here
-				// arrOfEl[x] = rightSubArr;
+				arrOfEl[x] = rightSubString;
 			}
+
+			ll max = -100000, index = -1;
+			for (ui i = 0; i < size; i++)
+			{
+				if (sum[i] > max)
+				{
+					max = sum[i];
+					index = i;
+				}
+			}
+			cout << arrOfEl[index];
 			cout << lineEnd;
 		}
 	}
