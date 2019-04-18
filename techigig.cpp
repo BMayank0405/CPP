@@ -61,10 +61,8 @@ int main()
 				cin >> elements[i];
 			}
 
-			for (int x = size - 1; x >= 0; x--)
+			for (int x = size - 1; x >= 0; --x)
 			{
-				//check for right sub array
-				//check for sum
 				ll rightSum = 0;
 				string rightSubString = "";
 				if (elements[x] > 0)
@@ -73,8 +71,6 @@ int main()
 					if (x + 1 < size - 1)
 					{
 						ll max = -1000000, index = -1;
-
-						//finding max
 						for (ui j = x + 2; j < size; j++)
 						{
 							if (sum[j] >= max)
@@ -86,8 +82,7 @@ int main()
 						//now pick the rightsub array from index
 						if (index > -1)
 						{
-							rightSubString = arrOfEl[index];
-							rightSubString += to_string(elements[x]);
+							rightSubString = arrOfEl[index] + to_string(elements[x]);
 							rightSum = max;
 						}
 						else
