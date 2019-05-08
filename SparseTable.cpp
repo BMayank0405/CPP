@@ -5,7 +5,10 @@
 
 #include <bits/stdc++.h>
 
-//optimization of program
+//optimization of program		loop(i, len - 1)
+{
+	cout << arr[i] << lineEnd;
+}
 #define eb emplace_back
 #define gc getchar_unlocked
 //end of optmization
@@ -18,7 +21,7 @@
 #define totalChars 25
 #define Pi pair<int, int>
 #define vi vector<int>
-#define vll vector<vll>
+#define vll vector<ll>
 #define vull vector<ull>
 //end of shorten coding time
 
@@ -40,6 +43,21 @@
 const char lineEnd = '\n';
 
 using namespace std;
+challa void BuildSparseTable(vector<ll> &arr, vector<ll, ll> &table, ull len)
+{
+	ull i, j;
+	loop(i, len - 1)
+	{
+		table[i][0] = arr[i];
+	}
+	for (j = 1; (1 << j) <= len; ++j)
+	{
+		for (i = 0; (i + (1 << j) - 1) < len; ++i)
+		{
+			table[i][j] = f();
+		}
+	}
+}
 
 int main()
 {
@@ -50,6 +68,15 @@ int main()
 	try
 	{
 		//write your code here
+		ull len, i;
+		cin >> len;
+		vll arr(len);
+		vector<ll, ll> table;
+		loop(i, len - 1)
+		{
+			cin >> arr[i];
+		}
+		BuildSparseTable(arr, table, len);
 	}
 	catch (exception const &e)
 	{
