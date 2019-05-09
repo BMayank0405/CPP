@@ -6,9 +6,7 @@
 #include <bits/stdc++.h>
 
 //optimization of program		loop(i, len - 1)
-{
-	cout << arr[i] << lineEnd;
-}
+
 #define eb emplace_back
 #define gc getchar_unlocked
 //end of optmization
@@ -43,7 +41,7 @@
 const char lineEnd = '\n';
 
 using namespace std;
-challa void BuildSparseTable(vector<ll> &arr, vector<ll, ll> &table, ull len)
+void BuildSparseTable(vector<ll> &arr, vector<vector<ll>> &table, ull len)
 {
 	ull i, j;
 	loop(i, len - 1)
@@ -54,9 +52,15 @@ challa void BuildSparseTable(vector<ll> &arr, vector<ll, ll> &table, ull len)
 	{
 		for (i = 0; (i + (1 << j) - 1) < len; ++i)
 		{
-			table[i][j] = f();
+			table[i][j] = min(table[i][j - 1], table[i + (1 << (j - 1))][j - 1]);
 		}
 	}
+}
+
+int query(vector<vector<ll>> &table, int start, int end)
+{
+	int range = (int)log2(end - start + 1);
+	return min(table[start][range], table[end - (1 << range) + 1][end]);
 }
 
 int main()
@@ -71,12 +75,15 @@ int main()
 		ull len, i;
 		cin >> len;
 		vll arr(len);
-		vector<ll, ll> table;
+		vector<vector<ll>> table(len + 1, vector<ll>((int)log2(len) + 1));
 		loop(i, len - 1)
 		{
 			cin >> arr[i];
 		}
 		BuildSparseTable(arr, table, len);
+		cout << query(table, 0, 4) << lineEnd;
+		cout << query(table, 4, 7) << lineEnd;
+		cout << query(table, 7, 8) << lineEnd;
 	}
 	catch (exception const &e)
 	{
