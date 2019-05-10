@@ -42,6 +42,13 @@
 const char lineEnd = '\n';
 
 using namespace std;
+
+int func(int a, int b)
+{
+	//here change the function according to the need
+	return min(a, b);
+}
+
 void BuildSparseTable(vec<ll> &arr, vec<vll> &table, ull len)
 {
 	ull i, j;
@@ -53,7 +60,7 @@ void BuildSparseTable(vec<ll> &arr, vec<vll> &table, ull len)
 	{
 		for (i = 0; (i + (1 << j) - 1) < len; i++)
 		{
-			table[i][j] = min(table[i][j - 1], table[i + (1 << (j - 1))][j - 1]);
+			table[i][j] = func(table[i][j - 1], table[i + (1 << (j - 1))][j - 1]);
 		}
 	}
 }
@@ -61,7 +68,7 @@ void BuildSparseTable(vec<ll> &arr, vec<vll> &table, ull len)
 int query(vec<vll> &table, int start, int end)
 {
 	int range = (int)log2(end - start + 1);
-	return min(table[start][range], table[end - (1 << range) + 1][range]);
+	return func(table[start][range], table[end - (1 << range) + 1][range]);
 }
 
 int main()
@@ -82,9 +89,12 @@ int main()
 			cin >> arr[i];
 		}
 		BuildSparseTable(arr, table, len);
-		cout << query(table, 0, 4) << lineEnd;
-		cout << query(table, 4, 7) << lineEnd;
-		cout << query(table, 7, 8) << lineEnd;
+		cases
+		{
+			ull i, j;
+			cin >> i >> j;
+			cout << query(table, i, j) << lineEnd;
+		}
 	}
 	catch (exception const &e)
 	{
