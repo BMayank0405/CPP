@@ -1,10 +1,10 @@
 /*
  * author: bmayank
- * URL : PROBLEM_URL
+ * URL : #{problem_url}
  */
 
 #include <bits/stdc++.h>
-#include <regex>
+
 //optimization of program
 #define eb emplace_back
 #define gc getchar_unlocked
@@ -17,9 +17,10 @@
 #define power9 (int)(1e9 + 7)
 #define totalChars 25
 #define Pi pair<int, int>
-#define vi vector<int>
-#define vll vector<vll>
-#define vull vector<ull>
+#define vec vector
+#define vi vec<int>
+#define vll vec<ll>
+#define vull vec<ull>
 //end of shorten coding time
 
 //helper code
@@ -49,30 +50,10 @@ int main()
 
     try
     {
-        //write your code here
-        // cases
-        // {
+        //finding diameter of a tree
 
-        // }
-        string str, mainStr = "";
-        getline(cin, str);
-        // cin >> str;
-        smatch m;
-        regex b("\\$[\\s0-9\\s]*");
-        regex_search(str, m, b);
-
-        for (auto x : m)
-        {
-            mainStr += x;
-        }
-        mainStr = mainStr.substr(1);
-        regex r("[\\s]*");
-        string res;
-        regex_replace(back_inserter(res), mainStr.begin(), mainStr.end(), r, "");
-        stringstream num(mainStr);
-        ll x = 0;
-        num >> x;
-        cout << x;
+        //first const a tree
+        //
     }
     catch (exception const &e)
     {
