@@ -21,6 +21,7 @@
 #define vi vec<int>
 #define vll vec<ll>
 #define vull vec<ull>
+#define endl "\n";
 //end of shorten coding time
 
 //helper code
@@ -38,8 +39,6 @@
 //debugging code
 #define watch(x) cout << (#x) << " is " << (x) << "\n"
 
-const char lineEnd = '\n';
-
 using namespace std;
 
 int main()
@@ -54,7 +53,7 @@ int main()
     }
     catch (exception const &e)
     {
-        cout << "There was an error: " << e.what() << lineEnd;
+        cout << "There was an error: " << e.what() << endl;
     }
 
     return 0;
