@@ -46,14 +46,21 @@ void AddEdge(vec<vi> &tree, int u, int v)
 {
 	tree[u].eb(v);
 }
-
+ull totalcount = 0;
 //function for printing dfs from a particular node
-void Dfs(vec<vi> &tree, int index)
+void Dfs(vec<vi> &tree, int index, vec<bool> &del)
 {
-	cout << index << endl;
+	del[index] = true;
 	for (int i = 0; i < tree[index].size(); ++i)
 	{
-		Dfs(tree, tree[index][i]);
+		if (!del[tree[index][i]])
+		{
+			Dfs(tree, tree[index][i], del);
+		}
+		else
+		{
+			totalcount--;
+		}
 	}
 }
 
@@ -75,6 +82,25 @@ void Bfs(vec<vi> &tree, int index)
 	}
 }
 
+void TotalCount(vec<vi> &tree, vec<bool> &del)
+{
+	int m;
+	cin >> m;
+	while (m--)
+	{
+		int ind;
+		cin >> ind;
+		ind--;
+		if (!del[ind])
+		{
+			Dfs(tree, ind, del);
+
+			del[ind] = true;
+			totalcount++;
+		}
+	}
+}
+
 int main()
 {
 	ios_base::sync_with_stdio(0);
@@ -86,14 +112,23 @@ int main()
 		//write your code here
 		int V, u, v;
 		// cin >> V;
-		vec<vi> tree(7, vi());
-		AddEdge(tree, 0, 1);
-		AddEdge(tree, 0, 4);
-		AddEdge(tree, 1, 3);
-		AddEdge(tree, 1, 2);
-		AddEdge(tree, 4, 5);
-		Dfs(tree, 0);
-		// Bfs(tree, 0);
+		cin >> V;
+		vec<vi> tree(V, vi());
+
+		vec<bool> del(V, false);
+		cin >> u;
+		for (int i = 1; i < V; i++)
+		{
+			cin >> u;
+			if (u != -1)
+			{
+				u--;
+				AddEdge(tree, u, i);
+			}
+		}
+
+		TotalCount(tree, del);
+		cout << totalcount;
 	}
 	catch (exception const &e)
 	{
