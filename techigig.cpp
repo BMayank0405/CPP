@@ -51,7 +51,7 @@ int main()
 	{
 		cases
 		{
-			int boolarr[100001] = {false};
+			int boolarr[12] = {false};
 			ll sum = 0;
 			int N, i;
 			cin >> N;
@@ -68,7 +68,8 @@ int main()
 				bool flag = true;
 				for (int z = 0; z < s.length(); z++)
 				{
-					if (boolarr[s[z]])
+
+					if (boolarr[(s[z] - '0')])
 					{
 						flag = false;
 						break;
@@ -78,7 +79,7 @@ int main()
 				{
 					for (int z = 0; z < s.length(); z++)
 					{
-						boolarr[s[z]] = true;
+						boolarr[(s[z] - '0')] = true;
 					}
 
 					sum += arr[j];
