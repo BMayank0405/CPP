@@ -49,48 +49,48 @@ int main()
 
 	try
 	{
-		cases
+		int testCases;
+		ll initCap;
+		cin >> testCases >> initCap;
+		ull y = 0, m = initCap;
+		ll zero = 0, level = 1;
+		map<ll, ll> repPow;
+		map<ll, ll> newrepPow;
+		repPow.insert({zero, initCap});
+		newrepPow.insert({zero, zero});
+		queue<ll> q;
+		q.push(zero);
+		while (testCases--)
 		{
-			int m, n, phase_Nonzero = 0, state_Nonzero = 0, state_max = -1, phase_max = -1;
-			ull phase_sum = 0, state_sum = 0;
-			cin >> m >> n;
-			for (int i = 0; i < m; i++)
-			{
-				int p;
-				cin >> p;
-				if (p > 0)
-					phase_Nonzero++;
-				if (phase_max < p)
-					phase_max = p;
-				phase_sum += p;
-			}
+			ll curEl, Cap;
+			cin >> curEl >> Cap;
+			repPow.insert({curEl, Cap});
+			newrepPow.insert({curEl, zero});
 
-			for (int i = 0; i < n; i++)
+			if (m == 0)
 			{
-				int s;
-				cin >> s;
-				if (s > 0)
-					state_Nonzero++;
-				if (state_max < s)
-					state_max = s;
-				state_sum += s;
+				m = y;
+				y = zero;
+				level++;
 			}
+			if (m > 0)
+			{
+				m--;
+			}
+			y += Cap;
+			if (!q.empty())
+			{
+				// int n, x = q.front();
+				// n = x;
+				while (repPow[q.front()] == newrepPow[q.front()])
+				{
+					q.pop();
+				}
 
-			if (state_sum == phase_sum)
-			{
-				if ((phase_max > state_Nonzero) || (state_max > phase_Nonzero))
-				{
-					cout << "NO" << endl;
-				}
-				else
-				{
-					cout << "YES" << endl;
-				}
+				newrepPow[q.front()]++;
 			}
-			else
-			{
-				cout << "NO" << endl;
-			}
+			cout << q.front() << " " << level << " " << newrepPow[q.front()] << endl;
+			q.push(curEl);
 		}
 	}
 	catch (exception const &e)
