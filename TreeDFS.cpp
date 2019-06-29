@@ -98,7 +98,7 @@ void TotalCount(vec<vi> &tree, vec<bool> &del)
 			del[ind] = true;
 			totalcount++;
 		}
-	}
+	} //
 }
 
 int main()
