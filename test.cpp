@@ -1,61 +1,90 @@
+/* My First Template  
+   :P
+*/
 #include <bits/stdc++.h>
-
 using namespace std;
-
-vector<int> MaskedArr(1e5 + 1, -1);
-
-int maskVal(int number)
+#define mod 1000000007
+#define ll long long int
+#define pb push_back
+#define mk make_pair
+ll power(ll a, ll b)
 {
-	if (MaskedArr[number] == -1)
+	ll x = 1, y = a;
+	while (b > 0)
 	{
-		int maskedVal = 0;
-		for (int i = 1; number / i; i *= 10)
+		if (b % 2 == 1)
 		{
-			int digit = number / i % 10;
-			maskedVal |= 1 << digit;
+			x = (x * y);
+			if (x > mod)
+				x %= mod;
 		}
-		MaskedArr[number] = maskedVal;
+		y = (y * y);
+		if (y > mod)
+			y %= mod;
+		b /= 2;
 	}
-	return MaskedArr[number];
+	return x;
 }
-
-int sumuptoCurrent(int sum, const vector<int> &IntArr)
-{
-	if (set == 0)
-	{
-		return memo[set] = 0;
-	}
-	if (memo[set] != -1)
-		return memo[set];
-
-	int result = 0;
-	for (auto num : IntArr)
-	{
-		int existingVal = maskVal(num);
-		if ((sum | existingVal) == sum)
-			result = max(sumuptoCurrent(sum ^ maskVal(num), IntArr) + num, result);
-	}
-	return result;
-}
+#define P pair<ll, int>
 
 int main()
 {
-	const int decimal = 1 << 10;
-	int N;
-	cin >> N;
-	vector<int> IntArr(N, 0);
-
-	for (int i = 0; i < N; i++)
+	//freopen("Input.txt", "r", stdin);
+	//freopen("SampleOutput.out", "w", stdout);
+	priority_queue<P, vector<P>, greater<P>> q;
+	ll a[100002];
+	int ans[100002];
+	vector<ll> price[100002];
+	int c, n, k, i, s, l;
+	cin >> c >> n >> k;
+	for (i = 0; i < k; i++)
 	{
-		cin >> IntArr[i];
+		cin >> a[i];
+		q.push(make_pair(a[i], i));
+		price[i].push_back(a[i]);
 	}
-
-	int Maxsum = 0;
-	for (int i = 0; i < decimal; i++)
+	for (i = k; i < c; i++)
 	{
-		Maxsum = max(Maxsum, sumuptoCurrent(i, IntArr));
+		q.push(make_pair(0, i));
 	}
-	cout << Maxsum << "\n";
-
+	for (i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+	pair<ll, int> z;
+	for (i = 0; i < n; i++)
+	{
+		z = q.top();
+		if (price[z.second].size() == 0)
+		{
+			price[z.second].push_back(a[i]);
+			z.first += a[i];
+			ans[i] = z.second;
+			q.pop();
+			q.push(z);
+		}
+		else if (price[z.second].size() == 1)
+		{
+			z.first = (z.first + a[i]) * 2;
+			price[z.second].push_back(a[i]);
+			ans[i] = z.second;
+			q.pop();
+			q.push(z);
+		}
+		else if (price[z.second].size() >= 2)
+		{
+			l = price[z.second].size();
+			z.first = (price[z.second][l - 1] + a[i]);
+			price[z.second].push_back(a[i]);
+			ans[i] = z.second;
+			z.first *= (l + 1);
+			q.pop();
+			q.push(z);
+		}
+	}
+	for (i = 0; i < n; i++)
+	{
+		cout << ans[i] + 1 << " ";
+	}
 	return 0;
 }
