@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/e-16/
+ * URL : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/yet-another-valentines-proposal/
  */
 
 #include <bits/stdc++.h>
@@ -41,10 +41,6 @@
 
 using namespace std;
 
-bool compareLen(const std::string &a, const std::string &b)
-{
-	return (a.size() < b.size());
-}
 int main()
 {
 	ios_base::sync_with_stdio(0);
@@ -53,59 +49,28 @@ int main()
 
 	try
 	{
-
-		int n;
-		cin >> n;
-		int arr[n], maxEl = 0;
-
-		for (int i = 0; i < n; ++i)
+		//write your code here
+		map<int, char> alpha;
+		for (char i = 'a'; i <= 'z'; ++i)
 		{
-			cin >> arr[i];
-			if (maxEl < arr[i])
-				maxEl = arr[i];
+			alpha[i - 'a' + 1] = i;
 		}
 
-		vi mp(maxEl, 0);
-		for (int i = 0; i < n; ++i)
+		// forEach(alpha)
+		// {
+		// 	cout << value.first << " : " << value.second << endl;
+		// }
+		int n, q;
+		cin >> n >> q;
+		string s;
+		getline(cin, s);
+		while (q--)
 		{
-			mp[arr[i] - 1]++;
-		}
-
-		ll max = 0, total = 0;
-
-		for (int i = mp.size() - 1; i >= 0; --i)
-		{
-			if (max > mp[i])
+			int l, r;
+			map<char, int> ch;
+			for (int i = l; i <= r; ++i)
 			{
-				total += max - mp[i];
-			}
-			else
-			{
-				max = mp[i];
-			}
-		}
-
-		if (total > 0)
-		{
-			cout << total << endl;
-		}
-		else
-		{
-			//print strings here in ascending order
-			int count = mp[0];
-			vec<string> p(count, "");
-			for (int i = 0; i < mp.size(); ++i)
-			{
-				for (int j = 0; j < mp[i]; ++j)
-				{
-					p[j] += to_string(i + 1) + " ";
-				}
-			}
-			sort(p.begin(), p.end());
-			cout << p.size() << endl;
-			for (int i = 0; i < count; ++i)
-			{
-				cout << p[i] << endl;
+				ch[s[i]]++;
 			}
 		}
 	}
