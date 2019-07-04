@@ -63,15 +63,23 @@ int main()
 		int n, q;
 		cin >> n >> q;
 		string s;
-		getline(cin, s);
+		cin >> s;
 		while (q--)
 		{
 			int l, r;
 			map<char, int> ch;
-			for (int i = l; i <= r; ++i)
+			cin >> l >> r;
+			//need to optimize this piece of code
+			for (int i = l - 1; i < r; ++i)
 			{
 				ch[s[i]]++;
 			}
+			string res = "";
+			for (int i = 1; i < 27; ++i)
+			{
+				res += alpha[ch[alpha[i]] % 26 + 1];
+			}
+			cout << res << endl;
 		}
 	}
 	catch (exception const &e)

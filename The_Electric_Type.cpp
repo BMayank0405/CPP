@@ -50,18 +50,29 @@ int main()
 	try
 	{
 		int n, i, j;
-		// int n = 5, i, j;
+		// 		int n = 5, i, j;
 		ll count = 0;
 		cin >> n;
 		ll arr[n];
-		// ll arr[n] = {1, 2, 2, 1, 3};
-		map<ll, int> mp;
+		// 		ll arr[n] = {1, 2, 2, 1, 3};
+		// ll arr[n] = {1, 2, 6, 2, 6, 3, 1, 2};
+		vi mp(n);
 		map<ll, int> p;
+		map<ll, int> z;
 		loop(i, n - 1)
 		{
 			cin >> arr[i];
-			mp[arr[i]]++;
+			// mp[arr[i]]++;
 		}
+		mp[n - 1] = 0;
+		// z[arr[n-1]] = 1;
+
+		for (int i = n - 2; i >= 0; i--)
+		{
+			mp[i] = mp[i + 1] + z[arr[i + 1]];
+			z[arr[i + 1]] = 1;
+		}
+
 		loop(i, n - 1)
 		{
 
@@ -70,7 +81,7 @@ int main()
 				p[arr[i]] = 1;
 
 				count += (n - i - 1);
-				count -= i * (mp[arr[i]] - 1);
+				count -= mp[i];
 				// forEach(mp)
 				// {
 				// 	if (value.second > 1)
@@ -88,7 +99,7 @@ int main()
 				// 	}
 				// }
 			}
-			mp[arr[i]]--;
+			// mp[arr[i]]--;
 		}
 		cout << count << endl;
 	}
