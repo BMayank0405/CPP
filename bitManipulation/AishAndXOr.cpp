@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : PROBLEM_URL
  */
 
 #include <bits/stdc++.h>
@@ -49,7 +49,46 @@ int main()
 
     try
     {
-        //write your code here
+        int n, i;
+        cin >> n;
+        vi arr(n, 0), val(n, 0);
+        loop(i, n - 1)
+        {
+
+            cin >> val[i];
+            if (val[i] == 0)
+            {
+                arr[i]++;
+            }
+            if (i > 0)
+            {
+                arr[i] += arr[i - 1];
+            }
+        }
+
+        cases
+        {
+            int l, r;
+            cin >> l >> r;
+            l--;
+            r--;
+            int x = arr[r] - arr[l];
+            if (val[l] == 0)
+            {
+                x++;
+            }
+            int XorVal = 0;
+            if ((x % 2 != 0 && (r - l + 1) % 2 != 0) || (x % 2 == 0 && (r - l + 1) % 2 == 0))
+            {
+                XorVal = 0;
+            }
+            else
+            {
+                XorVal = 1;
+            }
+
+            cout << XorVal << " " << x << endl;
+        }
     }
     catch (exception const &e)
     {

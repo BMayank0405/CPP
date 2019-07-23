@@ -31,30 +31,38 @@
 
 #define Odd(n) if (n & 1)
 #define cases \
-    ull t;    \
-    cin >> t; \
-    while (t--)
+	ull t;      \
+	cin >> t;   \
+	while (t--)
 //end of helper code
 
 //debugging code
-#define deb(x) cout << (#x) << " is " << (x) << endl
+#define watch(x) cout << (#x) << " is " << (x) << "\n"
 
 using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 
-    try
-    {
-        //write your code here
-    }
-    catch (exception const &e)
-    {
-        cout << "There was an error: " << e.what() << endl;
-    }
+	try
+	{
+		int n, i, x = 0;
+		cin >> n;
+		loop(i, 2 * n)
+		{
+			int a;
+			cin >> a;
+			x ^= a;
+		}
+		cout << x;
+	}
+	catch (exception const &e)
+	{
+		cout << "There was an error: " << e.what() << endl;
+	}
 
-    return 0;
+	return 0;
 }
