@@ -37,22 +37,9 @@
 //end of helper code
 
 //debugging code
-#define deb(x) cout << (#x) << " is " << (x) << "\n"
+#define deb(x) cout << (#x) << " is " << (x) << endl
 
 using namespace std;
-
-long long power(long long base, long long exponent, long long modulus)
-{
-	long long result = 1;
-	while (exponent > 0)
-	{
-		if (exponent % 2 == 1)
-			result = (result * base) % modulus;
-		exponent = exponent >> 1;
-		base = (base * base) % modulus;
-	}
-	return result;
-}
 
 int main()
 {
@@ -62,46 +49,29 @@ int main()
 
 	try
 	{
-		ull t, q = 0;
-		cin >> t;
-		while (q < t)
+		cases
 		{
-			int n, i;
-			ll ans = 1;
-			cin >> n;
-			vi arr(n, 0);
+			int n, k, i;
+			cin >> n >> k;
+			vi arr(n, false);
+			char c[n], lastVowel;
 			loop(i, n - 1)
 			{
-				cin >> arr[i];
-			}
-			i = 0;
-			while (i < n)
-			{
-				vi arr2;
-				ll maxNum = 1, maxDen = 0;
-				int j;
-				while (arr[i] > 1)
+				cin >> c[i];
+				if (c[i] < 97)
 				{
-					arr2.eb(arr[i]);
-					i++;
+					c[i] = (char)(c[i] + 32);
 				}
-				loop(j, arr2.size() - 1)
+				//use xor here
+				if ((c[i] ^ lastVowel) && (c[i] - 32 ^ lastVowel))
 				{
-					maxNum = (maxNum * arr2[j]) % power9;
-					maxDen = (maxDen + arr2[j]) % power9;
-				}
-				ll max2 = power(maxDen, power9 - 2, power9);
-				// deb(max2);
-				max2 = (max2 * maxNum) % power9;
-				ans = max(ans, max2);
-				while (arr[i] <= 1)
-				{
-					i++;
+					if ((c[i] ^ 'a') || c[])
 				}
 			}
 
-			cout << "Case #" << q + 1 << ": " << ans << endl;
-			q++;
+			//logic is maintain an array with true in pos where new vowel is marked as true
+
+			//then loop over that array and make a counter if counter is greater than max than update max
 		}
 	}
 	catch (exception const &e)
