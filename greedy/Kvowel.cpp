@@ -55,6 +55,12 @@ int main()
 			cin >> n >> k;
 			vi arr(n, false);
 			char c[n], lastVowel;
+			map<char, int> vow;
+			vow['a'] = 1;
+			vow['e'] = 1;
+			vow['i'] = 1;
+			vow['o'] = 1;
+			vow['u'] = 1;
 			loop(i, n - 1)
 			{
 				cin >> c[i];
@@ -63,11 +69,31 @@ int main()
 					c[i] = (char)(c[i] + 32);
 				}
 				//use xor here
-				if ((c[i] ^ lastVowel) && (c[i] - 32 ^ lastVowel))
+				if (vow[c[i]] && c[i] != lastVowel)
 				{
-					if ((c[i] ^ 'a') || c[])
+					arr[i] = true;
+					lastVowel = c[i];
 				}
 			}
+
+			i = 0;
+			int count = 0, maxVal = 0, lastSetIndex = -1;
+			loop(i, n - 1)
+			{
+				if (!arr[i])
+				{
+					count++;
+				}
+				else
+				{
+					maxVal = max(maxVal, count);
+
+					count = i - lastSetIndex;
+					lastSetIndex = i;
+				}
+			}
+
+			cout << maxVal << endl;
 
 			//logic is maintain an array with true in pos where new vowel is marked as true
 
