@@ -33,9 +33,9 @@
 
 #define Odd(n) if (n & 1)
 #define cases \
-    ull t;    \
-    cin >> t; \
-    while (t--)
+	ull t;      \
+	cin >> t;   \
+	while (t--)
 //end of helper code
 
 //debugging code
@@ -45,18 +45,36 @@ using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 
-    try
-    {
-        //write your code here
-    }
-    catch (exception const &e)
-    {
-        cout << "There was an error: " << e.what() << endl;
-    }
+	try
+	{
+		cases
+		{
+			ui n, i;
+			cin >> n;
+			vui arr(n);
+			loop(i, n - 1)
+			{
+				cin >> arr[i];
+			}
+			sort(arr.begin(), arr.end(), greater<ui>());
+			ull cost = 0;
+			loop(i, n - 1)
+			{
+				arr[i] = ((i + 1) * arr[i]) % power9;
+				cost += arr[i];
+				cost %= power9;
+			}
+			cout << cost << endl;
+		}
+	}
+	catch (exception const &e)
+	{
+		cout << "There was an error: " << e.what() << endl;
+	}
 
-    return 0;
+	return 0;
 }

@@ -4,7 +4,9 @@
 		"iosfwd": "cpp",
 		"iostream": "cpp",
 		"thread": "cpp",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"initializer_list": "cpp",
+		"string_view": "cpp"
 	},
 	"files.exclude": {
 		"**/.*": true,
