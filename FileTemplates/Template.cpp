@@ -30,6 +30,9 @@
 #define forEach(c) for (auto &value : c)
 #define loopab(loopconstant, startingValue, endingValue, adder) for (loopconstant = (startingValue); loopconstant <= (endingValue); loopconstant += adder)
 #define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
+#define all(c) (c).begin(), (c).end()
+#define print(c) \
+    forEach(c) { cout << c << endl; }
 
 #define Odd(n) if (n & 1)
 #define cases \
