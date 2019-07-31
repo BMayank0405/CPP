@@ -46,30 +46,6 @@
 
 using namespace std;
 
-vector<vector<int>> arr;
-
-void Comb(int min, int rem, vi arrCp)
-{
-	arrCp.eb(min);
-	if (rem == 0)
-	{
-		arr.eb(arrCp);
-	}
-	else
-	{
-
-		int i;
-		loopab(i, min, rem, 1)
-		{
-			if (rem - i >= 0)
-			{
-
-				Comb(i, rem - i, arrCp);
-			}
-		}
-	}
-}
-
 int main()
 {
 	ios_base::sync_with_stdio(0);
@@ -82,10 +58,8 @@ int main()
 		int n, i;
 		cin >> n;
 		vi arrCp;
-		loopab(i, 1, n, 1)
-		{
-			Comb(i, n - i, arrCp);
-		}
+		vector<vi> arr(n);
+		arr[1].eb();
 		forEach(arr)
 		{
 			display(value);
