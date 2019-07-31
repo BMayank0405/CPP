@@ -32,7 +32,7 @@
 #define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
 #define all(c) (c).begin(), (c).end()
 #define display(c) \
-	forEach(c) { cout << c << endl; }
+	forEach(c) { cout << value; }
 
 #define Odd(n) if (n & 1)
 #define cases \
@@ -46,13 +46,27 @@
 
 using namespace std;
 
-void Comb(int min, int rem)
+vector<vector<int>> arr;
+
+void Comb(int min, int rem, vi arrCp)
 {
-	int i;
-	loopab(i, min, rem, 1)
+	arrCp.eb(min);
+	if (rem == 0)
 	{
-		cin >> i;
-		Comb(i, rem - 1);
+		arr.eb(arrCp);
+	}
+	else
+	{
+
+		int i;
+		loopab(i, min, rem, 1)
+		{
+			if (rem - i >= 0)
+			{
+
+				Comb(i, rem - i, arrCp);
+			}
+		}
 	}
 }
 
@@ -65,10 +79,19 @@ int main()
 	try
 	{
 		//write your code here
-		int n;
-		// cin >> n;
-		n = 5;
-		Comb(1, n);
+		int n, i;
+		cin >> n;
+		// n = 5;
+		vi arrCp;
+		loopab(i, 1, n, 1)
+		{
+			Comb(i, n - i, arrCp);
+		}
+		forEach(arr)
+		{
+			display(value);
+			cout << endl;
+		}
 	}
 	catch (exception const &e)
 	{
