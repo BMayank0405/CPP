@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/practice-problems/algorithm/monk-at-the-graph-factory/
  */
 
 #include <bits/stdc++.h>
@@ -32,7 +32,7 @@
 #define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
 #define all(c) (c).begin(), (c).end()
 #define display(c) \
-	forEach(c) { cout << value; }
+	forEach(c) { cout << c << endl; }
 
 #define Odd(n) if (n & 1)
 #define cases \
@@ -54,17 +54,7 @@ int main()
 
 	try
 	{
-
-		int n, i;
-		cin >> n;
-		vi arrCp;
-		vector<vi> arr(n);
-		arr[1].eb();
-		forEach(arr)
-		{
-			display(value);
-			cout << endl;
-		}
+		//write your code here
 	}
 	catch (exception const &e)
 	{
