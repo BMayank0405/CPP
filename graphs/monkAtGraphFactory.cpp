@@ -12,14 +12,17 @@
 
 //shorten coding time
 #define ll long long
-#define ui unsigned int
-#define ull unsigned long long
+#define u unsigned
+#define usi u short int //
+#define ui u int
+#define ull u long long
 #define power9 (int)(1e9 + 7)
 #define totalChars 25
 #define Pi pair<int, int>
 #define Pui pair<ui, ui>
 #define vec vector
 #define vi vec<int>
+#define vusi vec<usi>
 #define vui vec<ui>
 #define vll vec<ll>
 #define vull vec<ull>
@@ -54,7 +57,33 @@ int main()
 
 	try
 	{
-		//write your code here
+		usi n, i, totalNodes = 0, j;
+		cin >> n;
+		vusi arr(n, 0);
+		loop(i, n - 1)
+		{
+			cin >> arr[i];
+		}
+		loop(i, n - 1)
+		{
+			totalNodes += arr[i];
+			loopab(j, i + 1, n - 1, 1)
+			{
+				if (arr[j] > 0)
+				{
+					arr[j]--;
+					arr[i]--;
+				}
+				if (arr[i] == 0)
+					break;
+			}
+		}
+		if (totalNodes <= n - 1)
+		{
+			cout << "Yes";
+		}
+		else
+			cout << "No";
 	}
 	catch (exception const &e)
 	{
