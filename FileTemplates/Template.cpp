@@ -12,8 +12,10 @@
 
 //shorten coding time
 #define ll long long
-#define ui unsigned int
-#define ull unsigned long long
+#define uns unsigned
+#define usi uns short int //
+#define ui uns int
+#define ull uns long long
 #define power9 (int)(1e9 + 7)
 #define totalChars 25
 #define Pi pair<int, int>
