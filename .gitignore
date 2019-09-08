@@ -2,3 +2,5 @@ binary/*
 .directory
 .vscode/*
 .**/*
+**/**/binary
+int
