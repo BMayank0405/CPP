@@ -13,7 +13,7 @@
 //shorten coding time
 #define ll long long
 #define uns unsigned
-#define usi uns short int //
+#define usi uns short int
 #define ui uns int
 #define ull uns long long
 #define power9 (int)(1e9 + 7)
@@ -88,7 +88,7 @@ void Reach_to_end(const vec<Pi> &error, ui index, set<ui> &s, const vec<Pi> &ins
     ui j;
     loop(j, error.size() - 1)
     {
-        if (currPos = error[j].first)
+        if (currPos == error[j].first)
         {
             currPos = error[j].second;
             TraverseToEnd(inst, index, currPos, s);
@@ -127,7 +127,7 @@ int main()
 
         ui curr_pos = 0;
         set<ui> s;
-        // vec<vec<Pi>> error_ins(k + 1, vec<Pi>());
+
         TraverseToEnd(inst, 0, curr_pos, s);
         loop(i, inst.size() - 1)
         {
