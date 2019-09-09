@@ -7,8 +7,12 @@
       "label": "compile sol",
 
       "type": "shell",
-      "command": "g++ -Wshadow -Wall -Weffc++ -Wextra -g ${relativeFileDirname}/sol.cpp -o ${relativeFileDirname}/binary/sol -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG",
-
+      "command": "${workspaceFolder}/testing/compile.sh",
+      "args": [
+        "true",
+        "${relativeFileDirname}/sol.cpp",
+        "${relativeFileDirname}/binary/sol"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -18,7 +22,12 @@
     {
       "label": "compile brute",
       "type": "shell",
-      "command": "g++ -Wshadow -Wall -Weffc++ -Wextra -g ${relativeFileDirname}/brute.cpp -o ${relativeFileDirname}/binary/brute -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG",
+      "command": "${workspaceFolder}/testing/compile.sh",
+      "args": [
+        "true",
+        "${relativeFileDirname}/brute.cpp",
+        "${relativeFileDirname}/binary/brute"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -28,7 +37,12 @@
     {
       "label": "compile test",
       "type": "shell",
-      "command": "g++ -Wshadow -Wall -Weffc++ -Wextra -g ${relativeFileDirname}/test.cpp -o ${relativeFileDirname}/binary/test -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG",
+      "command": "${workspaceFolder}/testing/compile.sh",
+      "args": [
+        "false",
+        "${relativeFileDirname}/test.cpp",
+        "${relativeFileDirname}/binary/test"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -47,10 +61,10 @@
       "problemMatcher": "$gcc"
     },
     {
-      "label": "test script",
+      "label": "test opt solution",
       "type": "shell",
-      "dependsOn": ["Client Build", "Server Build"],
       "command": "bash ${workspaceFolder}/testing/test.sh ${relativeFileDirname}",
+      "dependsOn": ["compile sol"],
       "group": {
         "kind": "build",
         "isDefault": true

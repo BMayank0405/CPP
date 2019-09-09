@@ -12,6 +12,6 @@ int main()
 	{
 		scanf("%d", &a[i]);
 	}
-	sort(a + 1, a + n + 1);
+	sort(a + 1, a + n);
 	printf("%d\n", a[2]);
 }
