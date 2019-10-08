@@ -26,6 +26,7 @@
 #define vll vec<ll>
 #define vull vec<ull>
 #define endl "\n";
+#define mp make_pair;
 //end of shorten coding time
 
 //helper code
