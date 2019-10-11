@@ -1,6 +1,4 @@
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
@@ -12,10 +10,6 @@
         "${relativeFileDirname}/sol.cpp",
         "${relativeFileDirname}/binary/sol"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": "$gcc"
     },
     {
@@ -27,10 +21,6 @@
         "${relativeFileDirname}/brute.cpp",
         "${relativeFileDirname}/binary/brute"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": "$gcc"
     },
     {
@@ -42,84 +32,42 @@
         "${relativeFileDirname}/test.cpp",
         "${relativeFileDirname}/binary/test"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": "$gcc"
     },
     {
       "label": "test solution",
       "type": "shell",
       "command": "bash ${workspaceFolder}/testing/test.sh ${relativeFileDirname}",
-      "dependsOn": [
-        "compile sol",
-        "compile brute",
-        "compile test"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "dependsOn": ["compile sol", "compile brute", "compile test"],
       "problemMatcher": "$gcc"
     },
     {
       "label": "test opt solution",
       "type": "shell",
       "command": "bash ${workspaceFolder}/testing/test.sh ${relativeFileDirname}",
-      "dependsOn": [
-        "compile sol"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "dependsOn": ["compile sol"],
       "problemMatcher": "$gcc"
     },
     {
       "label": "run code",
       "type": "shell",
       "command": "g++ -Wshadow -Wall -Weffc++ -Wextra -g ${file} -o ${workspaceFolder}/binary/${fileBasenameNoExtension} -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ${workspaceFolder}/binary/${fileBasenameNoExtension}",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
       "problemMatcher": "$gcc"
     },
     {
       "type": "shell",
-      "label": "cpp build active file",
-      "command": "/usr/bin/cpp",
-      "args": [
-        "-g",
-        "${file}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
-      ],
-      "options": {
-        "cwd": "/usr/bin"
-      },
-      "problemMatcher": [
-        "$gcc"
-      ],
-      "group": "build"
-    },
-    {
-      "type": "shell",
-      "label": "g++ build active file",
+      "label": "build",
       "command": "/bin/g++",
       "args": [
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${workspaceFolder}/binary/${fileBasenameNoExtension}"
       ],
       "options": {
         "cwd": "/bin"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "group": "build"
     }
   ]
