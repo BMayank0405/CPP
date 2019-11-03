@@ -72,6 +72,7 @@ int main()
         {
             cin >> u >> v >> w;
         }
+        arr
     }
     catch (exception const &e)
     {

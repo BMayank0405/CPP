@@ -1,24 +1,21 @@
-find min distance
+16 - 4 steps
+15 - 4 steps
 
-dist[] 
-dist[i] is min dist of i from root node
-
-
-normal bfs will result in incorrect as
-
-			1
-		/		\
-	 2 	-	 3
-	/ 	    \
+10  - /2 = 5 (3 steps)
+10 -1 = 9 /3 =3/3 = 1
 
 
 
 
+			n
+		/ |  \
+n-1	 n/2  n/3
 
-d[4] = min( w[1][4]+ d[1] , w[3][4] + d[3] )
+n = 10pow9
 
-this works for all the weights not just 0-1 weight paradigm
+f(n) =  min(f(n-1), f(n/2),f(n/3) )
 
 
-ek assumption  le sakte hai min path ko leke 
-if d[i] = 0 then mark that node as visited
+
+
+O(n)
