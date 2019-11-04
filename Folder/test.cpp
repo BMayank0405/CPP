@@ -11,16 +11,14 @@ int main(int argc, char *argv[])
 	srand(atoi(argv[1])); // atoi(s) converts an array of chars to int
 	int n = rand(2, 10);
 	printf("%d\n", n);
-	set<int> used;
 	for (int i = 0; i < n; ++i)
 	{
-		int x;
-		do
-		{
-			x = rand(1, 10);
-		} while (used.count(x));
-		printf("%d ", x);
-		used.insert(x);
+		int x, y, z;
+		x = rand(1, 10);
+		y = rand(1, 10);
+		z = rand(1, 10);
+
+		printf("%d %d %d", x, y, z);
 	}
 	puts("");
 }

@@ -35,13 +35,13 @@
 #define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
 #define all(c) (c).begin(), (c).end()
 #define display(c) \
-	forEach(c) { cout << c << endl; }
+    forEach(c) { cout << c << endl; }
 
 #define Odd(n) if (n & 1)
 #define cases \
-	ull t;      \
-	cin >> t;   \
-	while (t--)
+    ull t;    \
+    cin >> t; \
+    while (t--)
 //end of helper code
 
 //debugging code
@@ -51,49 +51,41 @@ using namespace std;
 
 int main()
 {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-	try
-	{
-		cases
-		{
-			set<int> ans;
-			ans.insert(0);
-			int a, b, len;
-			cin >> len >> a >> b;
-			if (a != b)
-			{
-				int val = (2 * (len)) + ((len * (len - 1)) / 2);
-				cout << val + 1 << endl;
-			}
-			else
-			{
-				int i = 1, z = 1;
-				loopab(i, 1, len, 1)
-				{
-					ans.insert(i * a);
-					ans.insert(-(i * b));
-					if (i > 1)
-					{
-						loopab(z, 1, i - 1, 1)
-						{
-							int v = ((i - z) * a) - (z * b);
-							ans.insert(v);
-						}
-					}
-				}
+    try
+    {
+        cases
+        {
+            set<int> ans;
+            ans.insert(0);
+            int a, b, len;
+            cin >> len >> a >> b;
+            int i = 1, z = 1;
+            loopab(i, 1, len, 1)
+            {
+                ans.insert(i * a);
+                ans.insert(-(i * b));
+                if (i > 1)
+                {
+                    loopab(z, 1, i - 1, 1)
+                    {
+                        int v = ((i - z) * a) - (z * b);
+                        ans.insert(v);
+                    }
+                }
+            }
 
-				cout << ans.size() << endl;
-			}
-		}
-		//write your code here
-	}
-	catch (exception const &e)
-	{
-		cout << "There was an error: " << e.what() << endl;
-	}
+            cout << ans.size() << endl;
+        }
+        //write your code here
+    }
+    catch (exception const &e)
+    {
+        cout << "There was an error: " << e.what() << endl;
+    }
 
-	return 0;
+    return 0;
 }

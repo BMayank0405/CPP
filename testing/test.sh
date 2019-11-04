@@ -1,9 +1,9 @@
 j=$1/binary
 # 
+cat /dev/null > int
 for((i = 1; ; ++i)); do
     echo $i
-		# $j $i > int
-
+    echo -e "\n"
     $j/test $i > int
     diff -w <($j/sol < int) <($j/brute < int) || break
 done
