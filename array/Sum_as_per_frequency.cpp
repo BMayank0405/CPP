@@ -1,6 +1,6 @@
 /*
  * author: bmayank
- * URL : #{problem_url}
+ * URL : https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/sum-as-per-frequency-88b00c1f/
  */
 
 #include <bits/stdc++.h>
@@ -26,8 +26,6 @@
 #define vll vec<ll>
 #define vull vec<ull>
 #define endl "\n";
-#define mp make_pair;
-#define u_map unordered_map;
 //end of shorten coding time
 
 //helper code
@@ -36,7 +34,7 @@
 #define loop(loopconstant1, stopper) loopab(loopconstant1, 0, stopper, 1)
 #define all(c) (c).begin(), (c).end()
 #define display(c) \
-    forEach(c) { cout << c << endl; }
+    forEach(c) { cout << value << endl; }
 
 #define Odd(n) if (n & 1)
 #define cases \
@@ -58,7 +56,46 @@ int main()
 
     try
     {
-        //write your code here
+        ll n, i, el, prev = 0, q, l, r;
+        cin >> n;
+        unordered_map<ll, ll> count_map;
+        vi arr(n, 0);
+        loop(i , n-1){
+            cin >> el;
+            if (count_map.find(el) == count_map.end()){
+                count_map[el] = 1;
+            }
+            else {
+                 count_map[el] += 1;
+            }
+        }
+
+        for (auto itr = count_map.begin(); itr != count_map.end(); itr++)
+        {
+            arr[itr->second-1] = arr[itr->second-1] + (itr->second * itr->first);
+        }
+
+        forEach(arr)
+        {
+            value = value + prev;
+            prev = value;
+        }
+        
+        cases{
+            cin >> l >> r;
+            l--;
+            r--;
+            if(l> 0){
+                cout << arr[r]-arr[l-1] << endl;
+            }
+            else {
+                cout << arr[r] << endl;
+            }
+        }
+        
+
+
+
     }
     catch (exception const &e)
     {
